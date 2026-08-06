@@ -1,4 +1,6 @@
 import React from "react";
+import { watchlist } from "../data/Data";
+import WatchlistItem from "./WatchlistItem";
 
 const WatchList = () => {
   return (
@@ -11,12 +13,17 @@ const WatchList = () => {
           placeholder="Search eg:infy, bse, nifty fut weekly, gold mcx"
           className="search"
         />
-        <span className="counts"> 9 / 50</span>
+        <span className="counts"> {watchlist.length} / 50</span>
       </div>
 
-      <ul className="list"></ul>
+      <ul className="list">
+        {watchlist.map((data,index) => {
+          return <WatchlistItem data={data} index={index} />;
+        })}
+      </ul>
     </div>
   );
 };
 
 export default WatchList;
+
